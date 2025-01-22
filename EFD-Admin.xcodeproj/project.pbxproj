@@ -1,0 +1,572 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		334B78102D41A44A00C48C30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 334B77F12D41A44800C48C30 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 334B77F82D41A44800C48C30;
+			remoteInfo = "EFD-Admin";
+		};
+		334B781A2D41A44A00C48C30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 334B77F12D41A44800C48C30 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 334B77F82D41A44800C48C30;
+			remoteInfo = "EFD-Admin";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		334B77F92D41A44800C48C30 /* EFD-Admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EFD-Admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		334B780F2D41A44A00C48C30 /* EFD-AdminTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EFD-AdminTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		334B78192D41A44A00C48C30 /* EFD-AdminUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EFD-AdminUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		334B78212D41A44A00C48C30 /* Exceptions for "EFD-Admin" folder in "EFD-Admin" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 334B77F82D41A44800C48C30 /* EFD-Admin */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		334B77FB2D41A44800C48C30 /* EFD-Admin */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				334B78212D41A44A00C48C30 /* Exceptions for "EFD-Admin" folder in "EFD-Admin" target */,
+			);
+			path = "EFD-Admin";
+			sourceTree = "<group>";
+		};
+		334B78122D41A44A00C48C30 /* EFD-AdminTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "EFD-AdminTests";
+			sourceTree = "<group>";
+		};
+		334B781C2D41A44A00C48C30 /* EFD-AdminUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "EFD-AdminUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		334B77F62D41A44800C48C30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		334B780C2D41A44A00C48C30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		334B78162D41A44A00C48C30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		334B77F02D41A44800C48C30 = {
+			isa = PBXGroup;
+			children = (
+				334B77FB2D41A44800C48C30 /* EFD-Admin */,
+				334B78122D41A44A00C48C30 /* EFD-AdminTests */,
+				334B781C2D41A44A00C48C30 /* EFD-AdminUITests */,
+				334B77FA2D41A44800C48C30 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		334B77FA2D41A44800C48C30 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				334B77F92D41A44800C48C30 /* EFD-Admin.app */,
+				334B780F2D41A44A00C48C30 /* EFD-AdminTests.xctest */,
+				334B78192D41A44A00C48C30 /* EFD-AdminUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		334B77F82D41A44800C48C30 /* EFD-Admin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 334B78222D41A44A00C48C30 /* Build configuration list for PBXNativeTarget "EFD-Admin" */;
+			buildPhases = (
+				334B77F52D41A44800C48C30 /* Sources */,
+				334B77F62D41A44800C48C30 /* Frameworks */,
+				334B77F72D41A44800C48C30 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				334B77FB2D41A44800C48C30 /* EFD-Admin */,
+			);
+			name = "EFD-Admin";
+			packageProductDependencies = (
+			);
+			productName = "EFD-Admin";
+			productReference = 334B77F92D41A44800C48C30 /* EFD-Admin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		334B780E2D41A44A00C48C30 /* EFD-AdminTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 334B78272D41A44A00C48C30 /* Build configuration list for PBXNativeTarget "EFD-AdminTests" */;
+			buildPhases = (
+				334B780B2D41A44A00C48C30 /* Sources */,
+				334B780C2D41A44A00C48C30 /* Frameworks */,
+				334B780D2D41A44A00C48C30 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				334B78112D41A44A00C48C30 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				334B78122D41A44A00C48C30 /* EFD-AdminTests */,
+			);
+			name = "EFD-AdminTests";
+			packageProductDependencies = (
+			);
+			productName = "EFD-AdminTests";
+			productReference = 334B780F2D41A44A00C48C30 /* EFD-AdminTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		334B78182D41A44A00C48C30 /* EFD-AdminUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 334B782A2D41A44A00C48C30 /* Build configuration list for PBXNativeTarget "EFD-AdminUITests" */;
+			buildPhases = (
+				334B78152D41A44A00C48C30 /* Sources */,
+				334B78162D41A44A00C48C30 /* Frameworks */,
+				334B78172D41A44A00C48C30 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				334B781B2D41A44A00C48C30 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				334B781C2D41A44A00C48C30 /* EFD-AdminUITests */,
+			);
+			name = "EFD-AdminUITests";
+			packageProductDependencies = (
+			);
+			productName = "EFD-AdminUITests";
+			productReference = 334B78192D41A44A00C48C30 /* EFD-AdminUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		334B77F12D41A44800C48C30 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					334B77F82D41A44800C48C30 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					334B780E2D41A44A00C48C30 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 334B77F82D41A44800C48C30;
+					};
+					334B78182D41A44A00C48C30 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 334B77F82D41A44800C48C30;
+					};
+				};
+			};
+			buildConfigurationList = 334B77F42D41A44800C48C30 /* Build configuration list for PBXProject "EFD-Admin" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 334B77F02D41A44800C48C30;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 334B77FA2D41A44800C48C30 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				334B77F82D41A44800C48C30 /* EFD-Admin */,
+				334B780E2D41A44A00C48C30 /* EFD-AdminTests */,
+				334B78182D41A44A00C48C30 /* EFD-AdminUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		334B77F72D41A44800C48C30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		334B780D2D41A44A00C48C30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		334B78172D41A44A00C48C30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		334B77F52D41A44800C48C30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		334B780B2D41A44A00C48C30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		334B78152D41A44A00C48C30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		334B78112D41A44A00C48C30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 334B77F82D41A44800C48C30 /* EFD-Admin */;
+			targetProxy = 334B78102D41A44A00C48C30 /* PBXContainerItemProxy */;
+		};
+		334B781B2D41A44A00C48C30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 334B77F82D41A44800C48C30 /* EFD-Admin */;
+			targetProxy = 334B781A2D41A44A00C48C30 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		334B78232D41A44A00C48C30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FNQ87MKBKT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EFD-Admin/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "yanislammari.EFD-Admin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		334B78242D41A44A00C48C30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FNQ87MKBKT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EFD-Admin/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "yanislammari.EFD-Admin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		334B78252D41A44A00C48C30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		334B78262D41A44A00C48C30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		334B78282D41A44A00C48C30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FNQ87MKBKT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "yanislammari.EFD-AdminTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EFD-Admin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EFD-Admin";
+			};
+			name = Debug;
+		};
+		334B78292D41A44A00C48C30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FNQ87MKBKT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "yanislammari.EFD-AdminTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EFD-Admin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EFD-Admin";
+			};
+			name = Release;
+		};
+		334B782B2D41A44A00C48C30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FNQ87MKBKT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "yanislammari.EFD-AdminUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "EFD-Admin";
+			};
+			name = Debug;
+		};
+		334B782C2D41A44A00C48C30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FNQ87MKBKT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "yanislammari.EFD-AdminUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "EFD-Admin";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		334B77F42D41A44800C48C30 /* Build configuration list for PBXProject "EFD-Admin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				334B78252D41A44A00C48C30 /* Debug */,
+				334B78262D41A44A00C48C30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		334B78222D41A44A00C48C30 /* Build configuration list for PBXNativeTarget "EFD-Admin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				334B78232D41A44A00C48C30 /* Debug */,
+				334B78242D41A44A00C48C30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		334B78272D41A44A00C48C30 /* Build configuration list for PBXNativeTarget "EFD-AdminTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				334B78282D41A44A00C48C30 /* Debug */,
+				334B78292D41A44A00C48C30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		334B782A2D41A44A00C48C30 /* Build configuration list for PBXNativeTarget "EFD-AdminUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				334B782B2D41A44A00C48C30 /* Debug */,
+				334B782C2D41A44A00C48C30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 334B77F12D41A44800C48C30 /* Project object */;
+}
