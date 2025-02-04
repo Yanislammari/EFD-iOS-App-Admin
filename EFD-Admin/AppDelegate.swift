@@ -10,12 +10,23 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    var token: String?
+    
+    
+    func bootIpadApp(){
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UINavigationController(rootViewController: HomeViewController())
+        
+        let homeNav = UINavigationController(rootViewController: HomeViewController())
+        
+        window.rootViewController = homeNav
         window.makeKeyAndVisible()
         self.window = window
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.bootIpadApp()
         return true
     }
+
+    
 }
