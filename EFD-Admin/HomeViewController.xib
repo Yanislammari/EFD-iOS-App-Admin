@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="EFD_Admin" customModuleProvider="target">
             <connections>
+                <outlet property="emailValue" destination="U5X-zq-392" id="G7U-pn-r5C"/>
+                <outlet property="errorMessage" destination="eUh-St-xH1" id="B0c-xZ-dcW"/>
+                <outlet property="passwordValue" destination="x4A-Ef-fph" id="HJi-p6-xRr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,17 +30,25 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4g-Le-QBF">
                             <rect key="frame" x="0.0" y="0.0" width="834" height="346"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connexion Admin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76F-je-dGz">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connexion Admin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8b-0p-44a">
                                     <rect key="frame" x="237" y="146.5" width="360" height="53"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUh-St-xH1">
+                                    <rect key="frame" x="372.5" y="235" width="89" height="43"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
+                                    <color key="textColor" red="0.60556942650000001" green="0.051757928469999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="76F-je-dGz" firstAttribute="height" secondItem="f4g-Le-QBF" secondAttribute="height" multiplier="0.153179" id="3nG-zc-UCu"/>
-                                <constraint firstItem="76F-je-dGz" firstAttribute="centerX" secondItem="f4g-Le-QBF" secondAttribute="centerX" id="HaH-Kf-XYk"/>
-                                <constraint firstItem="76F-je-dGz" firstAttribute="centerY" secondItem="f4g-Le-QBF" secondAttribute="centerY" id="TOL-8R-0WX"/>
+                                <constraint firstItem="eUh-St-xH1" firstAttribute="width" secondItem="p8b-0p-44a" secondAttribute="width" multiplier="0.247222" id="9bp-qy-7Q2"/>
+                                <constraint firstItem="eUh-St-xH1" firstAttribute="top" secondItem="p8b-0p-44a" secondAttribute="bottom" constant="35.5" id="NsR-pc-QHj"/>
+                                <constraint firstItem="p8b-0p-44a" firstAttribute="centerX" secondItem="f4g-Le-QBF" secondAttribute="centerX" id="V3Z-jZ-KxT"/>
+                                <constraint firstItem="eUh-St-xH1" firstAttribute="centerX" secondItem="f4g-Le-QBF" secondAttribute="centerX" id="fja-du-mTq"/>
+                                <constraint firstItem="p8b-0p-44a" firstAttribute="centerY" secondItem="f4g-Le-QBF" secondAttribute="centerY" id="qfB-pc-Gus"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P9P-d9-SNL">
@@ -90,6 +101,9 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="filled" title="Connexion"/>
+                                    <connections>
+                                        <action selector="connexion:" destination="-1" eventType="touchUpInside" id="PZS-9k-qOd"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>

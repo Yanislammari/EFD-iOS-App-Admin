@@ -8,33 +8,23 @@
 import Foundation
 import UIKit
 
-func request(url:String,verb:String)->URLRequest{
-    let url = URL(string: "https://127.0.0.1:3000/\(url)")!
+
+
+func request(route: String, method: String, token: String? = nil, body: [String: Any]? = nil) -> URLRequest {
+    var request = URLRequest(url: URL(string: "http://127.0.0.1:3000/\(route)")!)
+    request.httpMethod = method
     
-    let appdelegate = UIApplication.shared.delegate as! AppDelegate
-    let token = appdelegate.token
+    if let token = token {
+        request.setValue("BEARER \(token)", forHTTPHeaderField: "Authorization")
+    }
     
+    if let body = body {
+        let jsonBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        request.httpBody = jsonBody
+    }
     
-    var request = URLRequest(url: url)
-    request.httpMethod = verb
-    request.setValue("BEARER \(token!)", forHTTPHeaderField: "Authorization")
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     return request
 }
 
-func requestWithBody(url:String,verb:String,body:[String:Any])->URLRequest{
-    let url = URL(string: "https://127.0.0.1:3000/\(url)")!
-    
-    let appdelegate = UIApplication.shared.delegate as! AppDelegate
-    let token = appdelegate.token
-    
-    
-    let JSONbody = try? JSONSerialization.data(withJSONObject:body)
-    
-    var request = URLRequest(url: url)
-    request.httpMethod = verb
-    request.setValue("BEARER \(token!)", forHTTPHeaderField: "Authorization")
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.httpBody = JSONbody
-    return request
-}
+
