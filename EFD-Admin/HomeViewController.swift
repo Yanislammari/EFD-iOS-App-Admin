@@ -59,4 +59,22 @@ class HomeViewController: UIViewController {
         task.resume()
     }
     
+     func deconnexion() {
+         DispatchQueue.main.async {
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.token = nil
+                }
+
+                let loginVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
+                let navigationController = UINavigationController(rootViewController: loginVC)
+                
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let window = windowScene.windows.first {
+                    window.rootViewController = navigationController
+                    window.makeKeyAndVisible()
+                }
+            }
+    }
+
+    
 }
