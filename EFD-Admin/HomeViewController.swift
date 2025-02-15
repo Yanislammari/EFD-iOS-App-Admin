@@ -49,11 +49,15 @@ class HomeViewController: UIViewController {
             guard let answerSuccess = json as? [String : String] else { return }
             
             DispatchQueue.main.async{
-                let appdelegate = UIApplication.shared.delegate as! AppDelegate
+              
                 
-                appdelegate.token = answerSuccess["token"]
-                
-                self.navigationController?.pushViewController(AccueilViewController.newInstance(), animated: true)
+                if let token = answerSuccess["token"] {
+                    let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                    appdelegate.token = token  
+                    
+                    self.navigationController?.pushViewController(AccueilViewController.newInstance(), animated: true)
+                }
+
             }
         }
         task.resume()
