@@ -67,6 +67,9 @@
                                     <buttonConfiguration key="configuration" style="filled" title="Parcel">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="36"/>
                                     </buttonConfiguration>
+                                    <connections>
+                                        <action selector="parcelView:" destination="-1" eventType="touchUpInside" id="wtq-v5-bJ5"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unC-cH-MQn">
                                     <rect key="frame" x="642" y="94" width="162" height="38"/>
@@ -100,7 +103,7 @@
                                         <constraint firstAttribute="width" constant="309" id="y7N-h9-JBY"/>
                                     </constraints>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="filled" title="Map">
+                                    <buttonConfiguration key="configuration" style="filled" title="Delivery tour">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="36"/>
                                     </buttonConfiguration>
                                 </button>
@@ -110,7 +113,7 @@
                                         <constraint firstAttribute="height" constant="109" id="GY0-q6-2KS"/>
                                     </constraints>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="filled" title="Delivery tour">
+                                    <buttonConfiguration key="configuration" style="filled" title="Delivery">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
                                     </buttonConfiguration>
                                 </button>
