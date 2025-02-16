@@ -9,15 +9,11 @@ import UIKit
 
 class ParcelTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet weak var bigDescription: UILabel!
+    
+    func reload(with parcel: Parcel) {
+        bigDescription.text = "\(parcel.destination_name)\n \(parcel.status)\n"
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+        }
     
 }
