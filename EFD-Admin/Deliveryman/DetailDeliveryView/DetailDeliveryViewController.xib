@@ -27,15 +27,35 @@
                             <rect key="frame" x="0.0" y="0.0" width="834" height="220"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntL-1A-Fea">
-                                    <rect key="frame" x="372" y="46" width="103" height="53"/>
+                                    <rect key="frame" x="372" y="46" width="134" height="53"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkk-Hf-fq8">
+                                    <rect key="frame" x="134" y="149.5" width="166" height="39.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="166" id="Sdy-Jn-dLq"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="Edit "/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPD-FI-sye">
+                                    <rect key="frame" x="340" y="150" width="166" height="38.5"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="Delete"/>
+                                </button>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="zkk-Hf-fq8" firstAttribute="leading" secondItem="ntL-1A-Fea" secondAttribute="leading" constant="-238" id="3g8-6Y-cNJ"/>
+                                <constraint firstItem="NPD-FI-sye" firstAttribute="centerX" secondItem="ntL-1A-Fea" secondAttribute="centerX" constant="-16" id="8m0-H8-gun"/>
+                                <constraint firstItem="NPD-FI-sye" firstAttribute="leading" secondItem="zkk-Hf-fq8" secondAttribute="trailing" constant="40" id="DBf-6U-S1g"/>
+                                <constraint firstItem="NPD-FI-sye" firstAttribute="centerY" secondItem="zkk-Hf-fq8" secondAttribute="centerY" id="Jg8-xa-Z6g"/>
                                 <constraint firstItem="ntL-1A-Fea" firstAttribute="centerY" secondItem="QjR-Tr-PEe" secondAttribute="centerY" constant="-37.5" id="PNQ-wg-iYg"/>
+                                <constraint firstItem="NPD-FI-sye" firstAttribute="width" secondItem="zkk-Hf-fq8" secondAttribute="width" id="XPT-Gr-sF5"/>
+                                <constraint firstAttribute="bottom" secondItem="zkk-Hf-fq8" secondAttribute="bottom" constant="31" id="ZsX-nv-NX4"/>
                                 <constraint firstItem="ntL-1A-Fea" firstAttribute="leading" secondItem="QjR-Tr-PEe" secondAttribute="leading" constant="372" id="hKu-hC-in0"/>
+                                <constraint firstAttribute="bottom" secondItem="NPD-FI-sye" secondAttribute="bottom" constant="31.5" id="oAk-jQ-1Jf"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jm2-bc-bfx">

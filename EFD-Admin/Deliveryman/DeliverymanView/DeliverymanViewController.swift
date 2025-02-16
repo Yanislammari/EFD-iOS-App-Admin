@@ -42,11 +42,11 @@ class DeliverymanViewController: UIViewController , UITableViewDelegate, UITable
         return 200
     }
     
-    //func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      //  let next = DetailDeliveryViewController.newInstance(deliver: self.all[indexPath.row])
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let next = DetailDeliveryViewController.newInstance(deliver: self.all[indexPath.row])
         
-      //  reloadVC(next: next, actu: self)
-    //}
+        reloadVC(next: next, actu: self)
+    }
     
     func fetchDeliver() {
         
@@ -59,7 +59,6 @@ class DeliverymanViewController: UIViewController , UITableViewDelegate, UITable
             return
         }
 
-        print("✅ Token récupéré : \(token)")
 
         let request = request(route: "admin/delivery_man", method: "GET",token: token)
         
@@ -107,4 +106,7 @@ class DeliverymanViewController: UIViewController , UITableViewDelegate, UITable
         super.viewWillAppear(animated)
         fetchDeliver()
     }
+    
+    
+
 }
