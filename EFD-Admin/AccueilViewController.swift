@@ -26,14 +26,23 @@ class AccueilViewController: UIViewController {
             }
     }
     
+    @IBAction func deliverymanView(_ sender: Any) {
+        createVC(goTo: DeliverymanViewController(), actu: self)
+    }
+    
     static func newInstance()->AccueilViewController{
         let accueilVC = AccueilViewController()
         
         let Home = UINavigationController(rootViewController: AccueilViewController())
         
+        let Deliveryman : UINavigationController = goToSplitFromNavBar(goTo: DeliverymanViewController(), name: "Deliverymans", image: UIImage(named: "Deliveryman"), selectedImage: UIImage(named: "Deliveryman_selected"))
+        
         let tabBarController = UITabBarController()
         
-        tabBarController.viewControllers = [Home]
+        tabBarController.viewControllers = [
+            Home,
+            Deliveryman,
+        ]
                                             
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         

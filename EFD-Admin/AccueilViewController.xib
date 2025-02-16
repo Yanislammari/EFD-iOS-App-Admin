@@ -77,6 +77,9 @@
                                     <buttonConfiguration key="configuration" style="filled" title="deliveryman">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                     </buttonConfiguration>
+                                    <connections>
+                                        <action selector="deliverymanView:" destination="-1" eventType="touchUpInside" id="efE-ab-giU"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>

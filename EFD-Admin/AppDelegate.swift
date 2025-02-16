@@ -10,7 +10,18 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    var token: String?
+    var token: String? {
+        get {
+            return UserDefaults.standard.string(forKey: "authToken") // ✅ Récupérer le token sauvegardé
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "authToken") // ✅ Sauvegarder le token
+        }
+    }
+
+    func clearToken() {
+        UserDefaults.standard.removeObject(forKey: "authToken") // ✅ Supprimer le token
+    }
     
     
     func bootIpadApp(){
