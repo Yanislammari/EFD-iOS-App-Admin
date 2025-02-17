@@ -116,6 +116,9 @@
                                     <buttonConfiguration key="configuration" style="filled" title="Delivery">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
                                     </buttonConfiguration>
+                                    <connections>
+                                        <action selector="deliveryView:" destination="-1" eventType="touchUpInside" id="Vne-cQ-Ki1"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
