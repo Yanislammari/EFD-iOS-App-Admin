@@ -14,20 +14,20 @@ class Deliver {
     var phone: String
     var status: String
     var email: String
-    var passsword: String
+    var password: String
     var lat: Float
     var lng: Float
     var createdAt: String
     var updatedAt : String
     
-    init(deliver_id: String, first_name: String, name: String, phone: String, status: String, email: String, passsword: String,lat:Float , lng:Float, createdAt: String, updatedAt: String) {
+    init(deliver_id: String, first_name: String, name: String, phone: String, status: String, email: String, password: String,lat:Float , lng:Float, createdAt: String, updatedAt: String) {
         self.deliver_id = deliver_id
         self.first_name = first_name
         self.name = name
         self.phone = phone
         self.status = status
         self.email = email
-        self.passsword = passsword
+        self.password = password
         self.lat = lat
         self.lng = lng
         self.createdAt = createdAt
@@ -41,7 +41,7 @@ class Deliver {
               let phone = dict["phone"] as? String,
               let status = dict["status"] as? String,
               let email = dict["email"] as? String,
-              let passsword = dict["password"] as? String,
+              let password = dict["password"] as? String,
               let createdAt = dict["created_at"] as? String,
               let updatedAt = dict["updated_at"] as? String
         else {
@@ -51,6 +51,6 @@ class Deliver {
         let lat = dict["lat"] as? Float ?? 0.0
         let lng = dict["lng"] as? Float ?? 0.0
         
-        return Deliver(deliver_id: deliver_id, first_name: first_name, name: name, phone: phone, status: status, email: email, passsword: passsword, lat: lat,lng: lng,createdAt: createdAt, updatedAt: updatedAt)
+        return Deliver(deliver_id: deliver_id, first_name: first_name, name: name, phone: phone, status: status, email: email, password: password, lat: lat,lng: lng,createdAt: createdAt, updatedAt: updatedAt)
     }
 }
