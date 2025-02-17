@@ -34,6 +34,9 @@ class AccueilViewController: UIViewController {
         createVC(goTo: ParcelViewController(), actu: self)
     }
     
+    @IBAction func deliveryView(_ sender: Any) {
+        createVC(goTo: DeliveryViewController(), actu: self)
+    }
     
     static func newInstance()->AccueilViewController{
         let accueilVC = AccueilViewController()
@@ -44,6 +47,10 @@ class AccueilViewController: UIViewController {
         
         let Parcel: UINavigationController = goToSplitFromNavBar(goTo: ParcelViewController(), name: "Parcels", image: UIImage(named: "Parcel"), selectedImage: UIImage(named: "Parcel_selected"))
         
+        let Delivery: UINavigationController = goToSplitFromNavBar(goTo: DeliveryViewController(), name: "Deliveries", image: UIImage(named: "Delivery"), selectedImage: UIImage(named: "Delivery_selected"))
+        
+        
+        
         
         
         let tabBarController = UITabBarController()
@@ -52,6 +59,7 @@ class AccueilViewController: UIViewController {
             Home,
             Deliveryman,
             Parcel,
+            Delivery,
         ]
                                             
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
