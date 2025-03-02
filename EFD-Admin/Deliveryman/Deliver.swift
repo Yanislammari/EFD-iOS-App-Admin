@@ -48,8 +48,9 @@ class Deliver {
             return nil
         }
         
-        let lat = dict["lat"] as? Float ?? 0.0
-        let lng = dict["lng"] as? Float ?? 0.0
+      
+        let lat = (dict["lat"] as? NSNumber)?.floatValue ?? 0.0
+        let lng = (dict["lng"] as? NSNumber)?.floatValue ?? 0.0
         
         return Deliver(deliver_id: deliver_id, first_name: first_name, name: name, phone: phone, status: status, email: email, password: password, lat: lat,lng: lng,createdAt: createdAt, updatedAt: updatedAt)
     }

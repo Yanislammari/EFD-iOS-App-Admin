@@ -14,6 +14,7 @@
                 <outlet property="countryTextField" destination="8lG-dX-WZt" id="h9p-OG-zbv"/>
                 <outlet property="destinationNameTextField" destination="A6M-gR-4x8" id="kiU-UZ-mPr"/>
                 <outlet property="errorLabel" destination="14G-jk-cQw" id="KIt-qJ-NUI"/>
+                <outlet property="livraisonPicker" destination="TYh-D6-UUB" id="Vo3-A8-245"/>
                 <outlet property="postalCodeTextField" destination="ngu-Ph-w8h" id="lCD-Jd-H5G"/>
                 <outlet property="streetTextField" destination="1On-d5-JcZ" id="Ggw-xM-lLf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -76,18 +77,27 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYh-D6-UUB">
+                                    <rect key="frame" x="8" y="188" width="834" height="63"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="63" id="X0r-ZA-jjh"/>
+                                    </constraints>
+                                </pickerView>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="TYh-D6-UUB" firstAttribute="top" secondItem="ngu-Ph-w8h" secondAttribute="bottom" constant="7.5" id="9ZT-eM-E3i"/>
                                 <constraint firstItem="ngu-Ph-w8h" firstAttribute="leading" secondItem="yyu-WC-Uc6" secondAttribute="leading" id="FsM-2M-8oG"/>
                                 <constraint firstAttribute="trailing" secondItem="ngu-Ph-w8h" secondAttribute="trailing" id="I8y-KI-I5z"/>
                                 <constraint firstAttribute="trailing" secondItem="1On-d5-JcZ" secondAttribute="trailing" id="J9j-YY-Zj3"/>
                                 <constraint firstItem="ngu-Ph-w8h" firstAttribute="top" secondItem="1On-d5-JcZ" secondAttribute="bottom" constant="7.5" id="ae2-bt-xDr"/>
+                                <constraint firstAttribute="trailing" secondItem="TYh-D6-UUB" secondAttribute="trailing" constant="-8" id="azP-96-lnO"/>
                                 <constraint firstAttribute="trailing" secondItem="bu1-N2-mFB" secondAttribute="trailing" id="dMl-r0-5QS"/>
                                 <constraint firstItem="bu1-N2-mFB" firstAttribute="width" secondItem="yyu-WC-Uc6" secondAttribute="width" id="eJr-hV-kMz"/>
                                 <constraint firstItem="bu1-N2-mFB" firstAttribute="top" secondItem="yyu-WC-Uc6" secondAttribute="topMargin" id="gNn-ME-1eC"/>
                                 <constraint firstItem="1On-d5-JcZ" firstAttribute="top" secondItem="bu1-N2-mFB" secondAttribute="bottom" constant="7.5" id="jTi-Q7-yQl"/>
                                 <constraint firstItem="1On-d5-JcZ" firstAttribute="leading" secondItem="yyu-WC-Uc6" secondAttribute="leading" id="lW7-ES-1Jv"/>
                                 <constraint firstItem="bu1-N2-mFB" firstAttribute="leading" secondItem="yyu-WC-Uc6" secondAttribute="leading" id="tE1-65-tQy"/>
+                                <constraint firstItem="TYh-D6-UUB" firstAttribute="leading" secondItem="yyu-WC-Uc6" secondAttribute="leadingMargin" id="yKi-OF-i0O"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q86-3d-Yke">

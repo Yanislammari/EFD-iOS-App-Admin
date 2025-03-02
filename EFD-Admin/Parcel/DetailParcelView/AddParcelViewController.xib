@@ -14,6 +14,7 @@
                 <outlet property="countryTextField" destination="8lG-dX-WZt" id="rnk-7u-4Rh"/>
                 <outlet property="destinationNameTextField" destination="A6M-gR-4x8" id="Dfn-Yf-R5a"/>
                 <outlet property="errorLabel" destination="14G-jk-cQw" id="Wsh-Os-EN5"/>
+                <outlet property="livraisonPicker" destination="TYh-D6-UUB" id="kZl-h9-6yn"/>
                 <outlet property="postalCodeTextField" destination="ngu-Ph-w8h" id="FYl-wR-YP7"/>
                 <outlet property="streetTextField" destination="1On-d5-JcZ" id="pSM-ps-h37"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -30,8 +31,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVa-Ou-JDf">
                             <rect key="frame" x="0.0" y="0.0" width="834" height="355.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a parcel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kp-MV-Qhy">
-                                    <rect key="frame" x="209" y="55" width="233.5" height="53"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit a parcel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kp-MV-Qhy">
+                                    <rect key="frame" x="209" y="55" width="228.5" height="53"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -76,18 +77,27 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYh-D6-UUB">
+                                    <rect key="frame" x="8" y="188" width="834" height="63"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="63" id="X0r-ZA-jjh"/>
+                                    </constraints>
+                                </pickerView>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="TYh-D6-UUB" firstAttribute="top" secondItem="ngu-Ph-w8h" secondAttribute="bottom" constant="7.5" id="9ZT-eM-E3i"/>
                                 <constraint firstItem="ngu-Ph-w8h" firstAttribute="leading" secondItem="yyu-WC-Uc6" secondAttribute="leading" id="FsM-2M-8oG"/>
                                 <constraint firstAttribute="trailing" secondItem="ngu-Ph-w8h" secondAttribute="trailing" id="I8y-KI-I5z"/>
                                 <constraint firstAttribute="trailing" secondItem="1On-d5-JcZ" secondAttribute="trailing" id="J9j-YY-Zj3"/>
                                 <constraint firstItem="ngu-Ph-w8h" firstAttribute="top" secondItem="1On-d5-JcZ" secondAttribute="bottom" constant="7.5" id="ae2-bt-xDr"/>
+                                <constraint firstAttribute="trailing" secondItem="TYh-D6-UUB" secondAttribute="trailing" constant="-8" id="azP-96-lnO"/>
                                 <constraint firstAttribute="trailing" secondItem="bu1-N2-mFB" secondAttribute="trailing" id="dMl-r0-5QS"/>
                                 <constraint firstItem="bu1-N2-mFB" firstAttribute="width" secondItem="yyu-WC-Uc6" secondAttribute="width" id="eJr-hV-kMz"/>
                                 <constraint firstItem="bu1-N2-mFB" firstAttribute="top" secondItem="yyu-WC-Uc6" secondAttribute="topMargin" id="gNn-ME-1eC"/>
                                 <constraint firstItem="1On-d5-JcZ" firstAttribute="top" secondItem="bu1-N2-mFB" secondAttribute="bottom" constant="7.5" id="jTi-Q7-yQl"/>
                                 <constraint firstItem="1On-d5-JcZ" firstAttribute="leading" secondItem="yyu-WC-Uc6" secondAttribute="leading" id="lW7-ES-1Jv"/>
                                 <constraint firstItem="bu1-N2-mFB" firstAttribute="leading" secondItem="yyu-WC-Uc6" secondAttribute="leading" id="tE1-65-tQy"/>
+                                <constraint firstItem="TYh-D6-UUB" firstAttribute="leading" secondItem="yyu-WC-Uc6" secondAttribute="leadingMargin" id="yKi-OF-i0O"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q86-3d-Yke">
@@ -109,7 +119,7 @@
                                         <fontDescription key="titleFontDescription" type="system" pointSize="31"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="handleContinue:" destination="-1" eventType="touchUpInside" id="aWb-QT-UEc"/>
+                                        <action selector="handleContinue:" destination="-1" eventType="touchUpInside" id="n2S-yA-aQk"/>
                                     </connections>
                                 </button>
                             </subviews>

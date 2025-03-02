@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 class ModifyParcelViewController: UIViewController {
+        
     
     var parcel: Parcel!
+
     
     @IBOutlet weak var destinationNameTextField: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
@@ -17,12 +21,20 @@ class ModifyParcelViewController: UIViewController {
     @IBOutlet weak var streetTextField: UITextField!
     @IBOutlet weak var postalCodeTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var livraisonPicker: UIPickerView!
     
     var token: String?
+    var livraisons: [Delivery] = []
+    var selectedLivraison: Delivery?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        livraisonPicker.delegate = self
+        livraisonPicker.dataSource = self
+        fetchLivraisons()
+        
     }
     
     private func setupView() {
@@ -32,7 +44,7 @@ class ModifyParcelViewController: UIViewController {
         }
         
         print("📌 Détails du colis récupérés :", parcel.destination_name)
-
+        
         destinationNameTextField.text = parcel.destination_name
         countryTextField.text = parcel.adress?.country
         cityTextField.text = parcel.adress?.city
@@ -42,6 +54,69 @@ class ModifyParcelViewController: UIViewController {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.token = appDelegate.token
+    }
+    
+    func getCoordinatesFromAddress(address: String, completion: @escaping (CLLocationCoordinate2D?) -> Void) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) { (placemarks, error) in
+            if let error = error {
+                print("❌ Erreur de géocodage : \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+
+            guard let location = placemarks?.first?.location else {
+                print("❌ Aucune coordonnée trouvée pour l'adresse")
+                completion(nil)
+                return
+            }
+
+            print("✅ Coordonnées trouvées : \(location.coordinate.latitude), \(location.coordinate.longitude)")
+            completion(location.coordinate)
+        }
+    }
+
+    
+    private func fetchLivraisons() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+              let token = appDelegate.token else {
+            print("❌ Aucun token disponible.")
+            return
+        }
+        
+        print("📡 Requête GET : admin/livraison")
+        
+        let request = request(route: "admin/livraison", method: "GET", token: token)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("❌ Erreur réseau : \(error.localizedDescription)")
+                return
+            }
+            
+            guard let data = data else {
+                print("❌ Aucune donnée reçue")
+                return
+            }
+            
+            do {
+                let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+                if let jsonArray = jsonObject as? [[String: Any]] {
+                    let allLivraisons = jsonArray.compactMap { Delivery.fromJSON(dict: $0) }
+                    DispatchQueue.main.async {
+                        self.livraisons = allLivraisons
+                        self.livraisonPicker.reloadAllComponents()
+                        print("🚚 \(allLivraisons.count) livraisons chargées")
+                    }
+                } else {
+                    print("❌ Erreur JSON : Format non valide")
+                }
+            } catch {
+                print("❌ Erreur parsing JSON : \(error.localizedDescription)")
+            }
+        }
+        
+        task.resume()
     }
     
     @IBAction func updateParcel(_ sender: Any) {
@@ -162,3 +237,26 @@ class ModifyParcelViewController: UIViewController {
         return modifyVC
     }
 }
+
+extension ModifyParcelViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int { return 1 }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return livraisons.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "Livraison \(livraisons[row].livraison_date)"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard livraisons.indices.contains(row) else {
+            print("❌ Erreur : Index hors limite")
+            return
+        }
+        
+        selectedLivraison = livraisons[row]
+        print("✅ Livraison sélectionnée : \(selectedLivraison!.delivery_id)")
+    }
+}
+
