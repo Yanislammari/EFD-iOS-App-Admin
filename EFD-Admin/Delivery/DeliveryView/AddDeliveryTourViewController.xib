@@ -28,7 +28,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="834" height="356.5"/>
                             <subviews>
                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09e-Na-1H4">
-                                    <rect key="frame" x="33" y="70" width="769" height="216"/>
+                                    <rect key="frame" x="32.5" y="70" width="769" height="216.5"/>
                                 </pickerView>
                             </subviews>
                             <constraints>
@@ -65,7 +65,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iml-rz-Ufj">
                                     <rect key="frame" x="0.0" y="158" width="834" height="57"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="filled" title="Button">
+                                    <buttonConfiguration key="configuration" style="filled" title="Continue">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="36"/>
                                     </buttonConfiguration>
                                     <connections>

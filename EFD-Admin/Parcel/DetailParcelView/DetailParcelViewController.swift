@@ -66,9 +66,14 @@ class DetailParcelViewController: UIViewController {
     }
     
     func processParcelData(_ json: [String: Any]) {
+        print("📥 JSON reçu : \(json)")
+        print("🔍 Vérification manuelle : lat = \(json["lat"] ?? "❌ Clé absente"), lgt = \(json["lgt"] ?? "❌ Clé absente")")
+
         if let parcelData = Parcel.fromJSON(dict: json) {
             DispatchQueue.main.async {
                 self.parcel = parcelData
+                print("🚀 Parcel récupéré avec succès : lat=\(parcelData.lat), lgt=\(parcelData.lgt)")
+
                 self.updateUI()
             }
         } else {
@@ -78,10 +83,11 @@ class DetailParcelViewController: UIViewController {
     
     func updateUI() {
         guard let parcel = parcel else { return }
+        print("parcel ",parcel.lat)
         
-        let latString = parcel.lat != 0 ? "\(parcel.lat)" : "Non disponible"
-        let lngString = parcel.lgt != 0 ? "\(parcel.lgt)" : "Non disponible"
-
+        let latString = parcel.lat != 0 ? String(format: "%.3f", parcel.lat) : "Non disponible"
+        let lngString = parcel.lgt != 0 ? String(format: "%.3f", parcel.lgt) : "Non disponible"
+        
         
         let addressInfo = parcel.adress != nil ? """
             🏠 **Adresse** : \(parcel.adress!.street), \(parcel.adress!.city), \(parcel.adress!.country) - \(parcel.adress!.postal_code)

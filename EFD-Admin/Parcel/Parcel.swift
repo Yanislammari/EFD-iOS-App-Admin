@@ -41,8 +41,39 @@ class Parcel {
             return nil
         }
         
-        let lgt = dict["lgt"] as? Float ?? 0.0
-        let lat = dict["lat"] as? Float ?? 0.0
+        let lat: Float = {
+                if let latValue = dict["lat"] as? Double {  // 🔥 Correction ici
+                    print("✅ lat récupéré sous format Double : \(latValue)")
+                    return Float(latValue)
+                } else if let latValue = dict["lat"] as? NSNumber {
+                    print("✅ lat récupéré sous format NSNumber : \(latValue)")
+                    return latValue.floatValue
+                } else if let latString = dict["lat"] as? String, let latDouble = Double(latString) {
+                    print("✅ lat récupéré sous format String : \(latString)")
+                    return Float(latDouble)
+                } else {
+                    print("⚠️ Attention : lat non trouvé ou invalide, valeur par défaut = 0.0")
+                    return 0.0
+                }
+            }()
+
+            let lgt: Float = {
+                if let lgtValue = dict["lgt"] as? Double {  // 🔥 Correction ici
+                    print("✅ lgt récupéré sous format Double : \(lgtValue)")
+                    return Float(lgtValue)
+                } else if let lgtValue = dict["lgt"] as? NSNumber {
+                    print("✅ lgt récupéré sous format NSNumber : \(lgtValue)")
+                    return lgtValue.floatValue
+                } else if let lgtString = dict["lgt"] as? String, let lgtDouble = Double(lgtString) {
+                    print("✅ lgt récupéré sous format String : \(lgtString)")
+                    return Float(lgtDouble)
+                } else {
+                    print("⚠️ Attention : lgt non trouvé ou invalide, valeur par défaut = 0.0")
+                    return 0.0
+                }
+            }()
+
+            print("🚀 Coordonnées finales après parsing : lat=\(lat), lgt=\(lgt)")
         
         let adress: Address? = {
                     if let adressDict = dict["adress"] as? [String: Any] {

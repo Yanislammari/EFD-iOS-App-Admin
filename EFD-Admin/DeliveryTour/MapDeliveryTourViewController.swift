@@ -22,7 +22,7 @@ class MapDeliveryTourViewController: UIViewController {
     var locationManager: CLLocationManager!
     
     var updateTimer: Timer?
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class MapDeliveryTourViewController: UIViewController {
         super.viewWillAppear(animated)
         fetchDeliver()
         updateTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(fetchDeliver), userInfo: nil, repeats: true)
-
+        
         
     }
     
@@ -45,9 +45,7 @@ class MapDeliveryTourViewController: UIViewController {
     }
     
     @objc func fetchDeliver() {
-        
-        
-        
+        print("📡 Envoi de la requête GET : admin/delivery_man")
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let token = appDelegate.token else {
@@ -55,9 +53,7 @@ class MapDeliveryTourViewController: UIViewController {
             return
         }
         
-        
-        
-        let request = request(route: "admin/delivery_man", method: "GET",token: token)
+        let request = request(route: "admin/delivery_man", method: "GET", token: token)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -78,13 +74,16 @@ class MapDeliveryTourViewController: UIViewController {
                 let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
                 
                 if let jsonArray = jsonObject as? [[String: Any]] {
+                    print("✅ JSON converti en tableau avec \(jsonArray.count) éléments")
                     
                     let allDeliveries = jsonArray.compactMap { Deliver.fromJSON(dict: $0) }
                     
                     DispatchQueue.main.async {
+                        print("📌 Nombre de livreurs avant mise à jour : \(self.deliveryMan.count)")
                         self.deliveryMan = allDeliveries
+                        print("📌 Nombre de livreurs après mise à jour : \(self.deliveryMan.count)")
+                        self.reloadMap()
                     }
-                    
                 } else {
                     print("❌ Erreur : L'API ne retourne pas un tableau mais \(type(of: jsonObject))")
                 }
@@ -93,9 +92,9 @@ class MapDeliveryTourViewController: UIViewController {
                 print("❌ Erreur de parsing JSON : \(error.localizedDescription)")
             }
         }
-        
         task.resume()
     }
+    
     
     func initLocations() {
         self.locationManager = CLLocationManager()
@@ -106,27 +105,33 @@ class MapDeliveryTourViewController: UIViewController {
         
     }
     
-  
+    
     
     func reloadMap() {
         DispatchQueue.main.async {
+            print("📍 Rechargement de la carte avec \(self.deliveryMan.count) livreurs")
+            
             self.mapView.removeAnnotations(self.mapView.annotations)
-
             var newAnnotations: [MKPointAnnotation] = []
             
             for dm in self.deliveryMan {
+                print("📌 Ajout du livreur : \(dm.name) - Latitude: \(dm.lat), Longitude: \(dm.lng)")
+                
                 let newAnnotation = MKPointAnnotation()
                 newAnnotation.title = dm.name
                 newAnnotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(dm.lat), longitude: CLLocationDegrees(dm.lng))
                 newAnnotations.append(newAnnotation)
             }
             
-            self.mapView.addAnnotations(newAnnotations)
-            self.mapView.showAnnotations(newAnnotations, animated: true)
+            if newAnnotations.isEmpty {
+                print("⚠️ Aucun livreur à afficher")
+            } else {
+                self.mapView.addAnnotations(newAnnotations)
+                self.mapView.showAnnotations(newAnnotations, animated: true)
+                print("✅ \(newAnnotations.count) pins ajoutés sur la carte")
+            }
         }
     }
-
-    
 }
 
 

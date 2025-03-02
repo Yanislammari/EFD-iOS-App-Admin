@@ -135,7 +135,7 @@ class AddDeliveryTourViewController: UIViewController {
         let livraisonBody: [String: Any] = [
             "livraison": [
                 "deliveryman_id": selectedDeliveryman.deliver_id,
-                "livraison_date": "2025-01-17"
+                "livraison_date": "2025-08-17"
             ],
             "colis": Array(selectedColis)
         ]
