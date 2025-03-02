@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 class AddParcelViewController: UIViewController {
     
@@ -20,7 +22,7 @@ class AddParcelViewController: UIViewController {
     var token: String?
     var livraisons: [Delivery] = []
     var selectedLivraison: Delivery?
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,133 +35,7 @@ class AddParcelViewController: UIViewController {
         livraisonPicker.delegate = self
         livraisonPicker.dataSource = self
         fetchLivraisons()
-
-    }
-    
-    @IBAction func handleContinue(_ sender: Any) {
-        errorLabel.text = ""
         
-        // Vérification des champs
-        guard let destinationName = destinationNameTextField.text, !destinationName.isEmpty else {
-            errorLabel.text = "Destination name is required"
-            print("❌ Erreur: Destination name est vide")
-            return
-        }
-        
-        guard let country = countryTextField.text, !country.isEmpty else {
-            errorLabel.text = "Country is required"
-            print("❌ Erreur: Country est vide")
-            return
-        }
-        guard let city = cityTextField.text, !city.isEmpty else {
-            errorLabel.text = "City is required"
-            print("❌ Erreur: City est vide")
-            return
-        }
-        guard let street = streetTextField.text, !street.isEmpty else {
-            errorLabel.text = "Street is required"
-            print("❌ Erreur: Street est vide")
-            return
-        }
-        guard let postalCode = postalCodeTextField.text, !postalCode.isEmpty else {
-            errorLabel.text = "Postal code is required"
-            print("❌ Erreur: Postal code est vide")
-            return
-        }
-        
-        // Vérification de la longueur des champs
-        if destinationName.count > 128 {
-            errorLabel.text = "Destination name is too long"
-            print("❌ Erreur: Destination name trop long")
-            return
-        }
-        if country.count > 128 {
-            errorLabel.text = "Country name is too long"
-            print("❌ Erreur: Country trop long")
-            return
-        }
-        if city.count > 128 {
-            errorLabel.text = "City name is too long"
-            print("❌ Erreur: City trop long")
-            return
-        }
-        if street.count > 256 {
-            errorLabel.text = "Street name is too long"
-            print("❌ Erreur: Street trop long")
-            return
-        }
-        if postalCode.count > 56 {
-            errorLabel.text = "Postal code is too long"
-            print("❌ Erreur: Postal code trop long")
-            return
-        }
-        
-        let parcelBody: [String: Any] = [
-            "colis": [
-                "destination_name": destinationName
-            ],
-            "adress": [
-                "country": country,
-                "city": city,
-                "street": street,
-                "postal_code": postalCode
-            ]
-        ]
-        
-        print("📤 Envoi de la requête POST à /admin/colis avec les données: \(parcelBody)")
-        
-        guard let token = self.token else {
-            errorLabel.text = "User is not authenticated"
-            print("❌ Erreur: Aucun token disponible")
-            return
-        }
-        
-        let request = request(route: "admin/colis", method: "POST", token: token, body: parcelBody)
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                DispatchQueue.main.async {
-                    self.errorLabel.text = "Connection error"
-                    print("❌ Erreur réseau: \(error.localizedDescription)")
-                }
-                return
-            }
-            
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    self.errorLabel.text = "No data received"
-                    print("❌ Aucune donnée reçue du serveur")
-                }
-                return
-            }
-            
-            if let jsonString = String(data: data, encoding: .utf8) {
-                print("📥 Réponse JSON brute: \(jsonString)")
-            }
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                
-                DispatchQueue.main.async {
-                    if let responseMessage = json?["message"] as? String {
-                        self.errorLabel.text = responseMessage
-                        print("✅ Réponse du serveur: \(responseMessage)")
-                        return
-                    }
-                    
-                    self.showAlert(message: "Parcel added successfully") {
-                        print("🎉 Parcel ajouté avec succès !")
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                }
-            } catch {
-                DispatchQueue.main.async {
-                    self.errorLabel.text = "Error processing data"
-                    print("❌ Erreur de parsing JSON: \(error.localizedDescription)")
-                }
-            }
-        }
-        task.resume()
     }
     
     private func fetchLivraisons() {
@@ -168,22 +44,22 @@ class AddParcelViewController: UIViewController {
             print("❌ Aucun token disponible.")
             return
         }
-
+        
         print("📡 Requête GET : admin/livraison")
-
+        
         let request = request(route: "admin/livraison", method: "GET", token: token)
-
+        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("❌ Erreur réseau : \(error.localizedDescription)")
                 return
             }
-
+            
             guard let data = data else {
                 print("❌ Aucune donnée reçue")
                 return
             }
-
+            
             do {
                 let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
                 if let jsonArray = jsonObject as? [[String: Any]] {
@@ -192,7 +68,7 @@ class AddParcelViewController: UIViewController {
                         self.livraisons = allLivraisons
                         self.livraisonPicker.reloadAllComponents()
                         print("🚚 \(allLivraisons.count) livraisons chargées")
-
+                        
                         // Sélection automatique de la première livraison si disponible
                         if !self.livraisons.isEmpty {
                             self.selectedLivraison = self.livraisons[0]
@@ -207,10 +83,74 @@ class AddParcelViewController: UIViewController {
                 print("❌ Erreur parsing JSON : \(error.localizedDescription)")
             }
         }
-
+        
         task.resume()
     }
-
+    
+    func getCoordinatesFromAddress(address: String, completion: @escaping (CLLocationCoordinate2D?) -> Void) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) { (placemarks, error) in
+            if let error = error {
+                print("❌ Erreur de géocodage : \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            guard let location = placemarks?.first?.location else {
+                print("❌ Aucune coordonnée trouvée pour l'adresse")
+                completion(nil)
+                return
+            }
+            
+            print("✅ Coordonnées trouvées : \(location.coordinate.latitude), \(location.coordinate.longitude)")
+            completion(location.coordinate)
+        }
+    }
+    private func sendParcelCreation(requestBody: [String: Any]) {
+        guard let token = self.token else {
+            errorLabel.text = "Utilisateur non authentifié"
+            return
+        }
+        
+        let request = request(route: "admin/colis", method: "POST", token: token, body: requestBody)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.errorLabel.text = "Erreur réseau : \(error.localizedDescription)"
+                }
+                return
+            }
+            
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    self.errorLabel.text = "Aucune donnée reçue"
+                }
+                return
+            }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                
+                DispatchQueue.main.async {
+                    if let responseMessage = json?["message"] as? String {
+                        self.errorLabel.text = responseMessage
+                        print("✅ Réponse du serveur : \(responseMessage)")
+                        return
+                    }
+                    
+                    self.showAlert(message: "Colis ajouté avec succès") {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.errorLabel.text = "Erreur de traitement des données"
+                }
+            }
+        }
+        task.resume()
+    }
     
     func showAlert(message: String, completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {
@@ -221,25 +161,81 @@ class AddParcelViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
+    
+    
+    @IBAction func handleContinue(_ sender: Any) {
+        
+        errorLabel.text = ""
+        
+        guard let destinationName = destinationNameTextField.text, !destinationName.isEmpty,
+              let country = countryTextField.text, !country.isEmpty,
+              let city = cityTextField.text, !city.isEmpty,
+              let street = streetTextField.text, !street.isEmpty,
+              let postalCode = postalCodeTextField.text, !postalCode.isEmpty else {
+            errorLabel.text = "Tous les champs sont obligatoires"
+            return
+        }
+        
+        let fullAddress = "\(street), \(postalCode) \(city), \(country)"
+        print("📍 Adresse complète : \(fullAddress)")
+        
+        getCoordinatesFromAddress(address: fullAddress) { coordinates in
+            guard let coordinates = coordinates else {
+                DispatchQueue.main.async {
+                    self.errorLabel.text = "Adresse invalide, impossible de récupérer les coordonnées"
+                }
+                return
+            }
+            
+            let parcelBody: [String: Any] = [
+                "colis": [
+                    "destination_name": destinationName,
+                    "lat": coordinates.latitude,
+                    "lgt": coordinates.longitude
+                ],
+                "adress": [
+                    "country": country,
+                    "city": city,
+                    "street": street,
+                    "postal_code": postalCode
+                ]
+            ]
+            
+            print("📤 Envoi de la requête POST avec : \(parcelBody)")
+            
+            self.sendParcelCreation(requestBody: parcelBody)
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 extension AddParcelViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int { return 1 }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return livraisons.count
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return "Livraison \(livraisons[row].livraison_date)"
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard livraisons.indices.contains(row) else {
             print("❌ Erreur : Index hors limite")
             return
         }
-
+        
         selectedLivraison = livraisons[row]
         print("✅ Livraison sélectionnée : \(selectedLivraison!.delivery_id)")
     }
