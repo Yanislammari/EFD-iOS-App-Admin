@@ -106,6 +106,9 @@
                                     <buttonConfiguration key="configuration" style="filled" title="Delivery tour">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="36"/>
                                     </buttonConfiguration>
+                                    <connections>
+                                        <action selector="deliveryTourView:" destination="-1" eventType="touchUpInside" id="jrd-Xm-hmd"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8t-qV-6vA">
                                     <rect key="frame" x="603" y="22" width="173" height="109"/>

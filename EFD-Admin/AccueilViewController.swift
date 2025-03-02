@@ -38,16 +38,24 @@ class AccueilViewController: UIViewController {
         createVC(goTo: DeliveryViewController(), actu: self)
     }
     
+    @IBAction func deliveryTourView(_ sender: Any) {
+        self.navigationController?.pushViewController(MapDeliveryTourViewController(), animated: true)
+          
+         
+    }
     static func newInstance()->AccueilViewController{
         let accueilVC = AccueilViewController()
         
         let Home = UINavigationController(rootViewController: AccueilViewController())
+        
+        
         
         let Deliveryman : UINavigationController = goToSplitFromNavBar(goTo: DeliverymanViewController(), name: "Deliverymans", image: UIImage(named: "Deliveryman"), selectedImage: UIImage(named: "Deliveryman_selected"))
         
         let Parcel: UINavigationController = goToSplitFromNavBar(goTo: ParcelViewController(), name: "Parcels", image: UIImage(named: "Parcel"), selectedImage: UIImage(named: "Parcel_selected"))
         
         let Delivery: UINavigationController = goToSplitFromNavBar(goTo: DeliveryViewController(), name: "Deliveries", image: UIImage(named: "Delivery"), selectedImage: UIImage(named: "Delivery_selected"))
+        
         
         
         

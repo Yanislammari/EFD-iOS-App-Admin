@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad11_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapDeliveryTourViewController" customModule="EFD_Admin" customModuleProvider="target">
+            <connections>
+                <outlet property="mapView" destination="BNa-9D-M6o" id="bow-b4-AgJ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="834" height="1210"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNa-9D-M6o">
+                    <rect key="frame" x="0.0" y="0.0" width="834" height="1231"/>
+                    <standardMapConfiguration key="preferredConfiguration"/>
+                </mapView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="BNa-9D-M6o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="G8p-MH-5IK"/>
+                <constraint firstAttribute="trailing" secondItem="BNa-9D-M6o" secondAttribute="trailing" id="IKP-jA-Jjd"/>
+                <constraint firstAttribute="bottom" secondItem="BNa-9D-M6o" secondAttribute="bottom" constant="-21" id="LKD-Tg-1vx"/>
+                <constraint firstItem="BNa-9D-M6o" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="aO6-Pw-nab"/>
+            </constraints>
+            <point key="canvasLocation" x="-31.654676258992808" y="20.826446280991735"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
