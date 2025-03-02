@@ -16,78 +16,78 @@ class DetailDeliveryViewController: UIViewController {
     @IBOutlet weak var bigDescription: UITextView!
     
     
-
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            bigDescription.layer.cornerRadius = 10
-            bigDescription.layer.masksToBounds = true
-            
-            fetchDeliverymanDetails()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bigDescription.layer.cornerRadius = 10
+        bigDescription.layer.masksToBounds = true
+        
+        fetchDeliverymanDetails()
+    }
+    
+    func fetchDeliverymanDetails() {
+        guard let deliverId = deliver?.deliver_id else {
+            print("❌ Aucun UUID disponible pour ce livreur.")
+            return
         }
         
-        func fetchDeliverymanDetails() {
-            guard let deliverId = deliver?.deliver_id else {
-                print("❌ Aucun UUID disponible pour ce livreur.")
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+              let token = appDelegate.token else {
+            print("❌ Aucun token disponible. L'utilisateur doit se reconnecter.")
+            return
+        }
+        
+        let request = request(route: "admin/delivery_man/\(deliverId)", method: "GET", token: token)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("❌ Erreur réseau : \(error.localizedDescription)")
                 return
             }
             
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-                  let token = appDelegate.token else {
-                print("❌ Aucun token disponible. L'utilisateur doit se reconnecter.")
+            guard let data = data else {
+                print("❌ Aucune donnée reçue")
                 return
             }
             
-            let request = request(route: "admin/delivery_man/\(deliverId)", method: "GET", token: token)
-
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                if let error = error {
-                    print("❌ Erreur réseau : \(error.localizedDescription)")
-                    return
-                }
-                
-                guard let data = data else {
-                    print("❌ Aucune donnée reçue")
-                    return
-                }
-                
-                if let jsonString = String(data: data, encoding: .utf8) {
-                    print("📥 Réponse JSON brute : \(jsonString)")
-                }
-                
-                do {
-                    if let jsonDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                        print("✅ JSON après extraction d'un objet :", jsonDict)
-                        self.processDeliverymanData(jsonDict)
-                    } else {
-                        print("❌ Erreur : Format JSON inattendu")
-                    }
-                } catch {
-                    print("❌ Erreur de parsing JSON :", error.localizedDescription)
-                }
+            if let jsonString = String(data: data, encoding: .utf8) {
+                print("📥 Réponse JSON brute : \(jsonString)")
             }
             
-            task.resume()
-        }
-
-        func processDeliverymanData(_ json: [String: Any]) {
-            if let deliveryman = Deliver.fromJSON(dict: json) {
-                DispatchQueue.main.async {
-                    self.deliver = deliveryman
-                    self.updateUI()
+            do {
+                if let jsonDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    print("✅ JSON après extraction d'un objet :", jsonDict)
+                    self.processDeliverymanData(jsonDict)
+                } else {
+                    print("❌ Erreur : Format JSON inattendu")
                 }
-            } else {
-                print("❌ Erreur : Conversion JSON -> Deliver échouée")
+            } catch {
+                print("❌ Erreur de parsing JSON :", error.localizedDescription)
             }
         }
-
-        func updateUI() {
-            guard let deliver = deliver else { return }
-
-            let latString = deliver.lat != 0 ? "\(deliver.lat)" : "Non disponible"
-            let lngString = deliver.lng != 0 ? "\(deliver.lng)" : "Non disponible"
-
-            deliverymanName.text = deliver.name
-            bigDescription.text = """
+        
+        task.resume()
+    }
+    
+    func processDeliverymanData(_ json: [String: Any]) {
+        if let deliveryman = Deliver.fromJSON(dict: json) {
+            DispatchQueue.main.async {
+                self.deliver = deliveryman
+                self.updateUI()
+            }
+        } else {
+            print("❌ Erreur : Conversion JSON -> Deliver échouée")
+        }
+    }
+    
+    func updateUI() {
+        guard let deliver = deliver else { return }
+        
+        let latString = deliver.lat != 0 ? "\(deliver.lat)" : "Non disponible"
+        let lngString = deliver.lng != 0 ? "\(deliver.lng)" : "Non disponible"
+        
+        deliverymanName.text = deliver.name
+        bigDescription.text = """
             📦 **Nom** : \(deliver.name)
             🏷️ **Prénom** : \(deliver.first_name)
             📞 **Téléphone** : \(deliver.phone)
@@ -99,11 +99,68 @@ class DetailDeliveryViewController: UIViewController {
             🕒 **Créé le** : \(deliver.createdAt)
             🔄 **Mis à jour le** : \(deliver.updatedAt)
             """
-        }
-
-        static func newInstance(deliver: Deliver) -> DetailDeliveryViewController {
-            let detailVC = DetailDeliveryViewController()
-            detailVC.deliver = deliver
-            return detailVC
-        }
     }
+    
+    static func newInstance(deliver: Deliver) -> DetailDeliveryViewController {
+        let detailVC = DetailDeliveryViewController()
+        detailVC.deliver = deliver
+        return detailVC
+    }
+    
+    @IBAction func createDeliveryman(_ sender: Any) {
+        reloadVC(next: AddDeliverymanViewController(), actu: self)
+    }
+    
+    @IBAction func deleteDeliveryman(_ sender: Any) {
+        guard let deliverId = deliver?.deliver_id else {
+            print("❌ Aucun UUID disponible pour ce livreur.")
+            return
+        }
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+              let token = appDelegate.token else {
+            print("❌ Aucun token disponible. L'utilisateur doit se reconnecter.")
+            return
+        }
+        
+        let request = request(route: "admin/delivery_man/\(deliverId)", method: "DELETE", token: token)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("❌ Erreur réseau : \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                }
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("❌ Réponse invalide du serveur.")
+                DispatchQueue.main.async {
+                }
+                return
+            }
+            
+            if httpResponse.statusCode == 200 {
+                print("✅ Livreur supprimé avec succès.")
+                DispatchQueue.main.async {
+                    
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+            } else {
+                DispatchQueue.main.async {
+                    
+                }
+            }
+        }
+        
+        task.resume()
+    }
+    
+    @IBAction func patchDeliveryman(_ sender: Any) {
+        let modifyVC = ModifyDeliverymanViewController.newInstance(deliver: deliver)
+        reloadVC(next: modifyVC, actu: self)
+
+    }
+}
+

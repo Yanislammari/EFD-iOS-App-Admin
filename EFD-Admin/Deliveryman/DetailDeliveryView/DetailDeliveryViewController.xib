@@ -26,8 +26,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QjR-Tr-PEe">
                             <rect key="frame" x="0.0" y="0.0" width="834" height="220"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntL-1A-Fea">
-                                    <rect key="frame" x="372" y="46" width="134" height="53"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntL-1A-Fea">
+                                    <rect key="frame" x="226" y="46" width="364" height="53"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -39,22 +39,39 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="filled" title="Edit "/>
+                                    <connections>
+                                        <action selector="patchDeliveryman:" destination="-1" eventType="touchUpInside" id="87C-LD-3Gj"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPD-FI-sye">
                                     <rect key="frame" x="340" y="150" width="166" height="38.5"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="filled" title="Delete"/>
+                                    <connections>
+                                        <action selector="deleteDeliveryman:" destination="-1" eventType="touchUpInside" id="SO6-EN-dkv"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iF-YH-Wlg">
+                                    <rect key="frame" x="550" y="150" width="166" height="38.5"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="Create"/>
+                                    <connections>
+                                        <action selector="createDeliveryman:" destination="-1" eventType="touchUpInside" id="DWS-zS-XK1"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="zkk-Hf-fq8" firstAttribute="leading" secondItem="ntL-1A-Fea" secondAttribute="leading" constant="-238" id="3g8-6Y-cNJ"/>
-                                <constraint firstItem="NPD-FI-sye" firstAttribute="centerX" secondItem="ntL-1A-Fea" secondAttribute="centerX" constant="-16" id="8m0-H8-gun"/>
+                                <constraint firstItem="zkk-Hf-fq8" firstAttribute="leading" secondItem="ntL-1A-Fea" secondAttribute="leading" constant="-92" id="3g8-6Y-cNJ"/>
+                                <constraint firstItem="2iF-YH-Wlg" firstAttribute="baseline" secondItem="NPD-FI-sye" secondAttribute="baseline" id="4Yq-Db-qRJ"/>
+                                <constraint firstItem="2iF-YH-Wlg" firstAttribute="leading" secondItem="NPD-FI-sye" secondAttribute="trailing" constant="44" id="4mp-5c-BQN"/>
+                                <constraint firstItem="NPD-FI-sye" firstAttribute="centerX" secondItem="ntL-1A-Fea" secondAttribute="centerX" constant="15" id="8m0-H8-gun"/>
+                                <constraint firstItem="2iF-YH-Wlg" firstAttribute="width" secondItem="NPD-FI-sye" secondAttribute="width" id="9AL-gP-11s"/>
                                 <constraint firstItem="NPD-FI-sye" firstAttribute="leading" secondItem="zkk-Hf-fq8" secondAttribute="trailing" constant="40" id="DBf-6U-S1g"/>
                                 <constraint firstItem="NPD-FI-sye" firstAttribute="centerY" secondItem="zkk-Hf-fq8" secondAttribute="centerY" id="Jg8-xa-Z6g"/>
-                                <constraint firstItem="ntL-1A-Fea" firstAttribute="centerY" secondItem="QjR-Tr-PEe" secondAttribute="centerY" constant="-37.5" id="PNQ-wg-iYg"/>
+                                <constraint firstItem="ntL-1A-Fea" firstAttribute="centerY" secondItem="QjR-Tr-PEe" secondAttribute="centerY" constant="-37" id="PNQ-wg-iYg"/>
                                 <constraint firstItem="NPD-FI-sye" firstAttribute="width" secondItem="zkk-Hf-fq8" secondAttribute="width" id="XPT-Gr-sF5"/>
                                 <constraint firstAttribute="bottom" secondItem="zkk-Hf-fq8" secondAttribute="bottom" constant="31" id="ZsX-nv-NX4"/>
-                                <constraint firstItem="ntL-1A-Fea" firstAttribute="leading" secondItem="QjR-Tr-PEe" secondAttribute="leading" constant="372" id="hKu-hC-in0"/>
+                                <constraint firstItem="ntL-1A-Fea" firstAttribute="leading" secondItem="QjR-Tr-PEe" secondAttribute="leading" constant="226" id="hKu-hC-in0"/>
                                 <constraint firstAttribute="bottom" secondItem="NPD-FI-sye" secondAttribute="bottom" constant="31.5" id="oAk-jQ-1Jf"/>
                             </constraints>
                         </view>
