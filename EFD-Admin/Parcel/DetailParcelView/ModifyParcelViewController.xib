@@ -8,15 +8,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddDeliverymanViewController" customModule="EFD_Admin" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ModifyParcelViewController" customModule="EFD_Admin" customModuleProvider="target">
             <connections>
-                <outlet property="emailTextField" destination="A6M-gR-4x8" id="krW-8m-hd4"/>
-                <outlet property="errorName" destination="14G-jk-cQw" id="Vsh-Ba-BxM"/>
-                <outlet property="firstNameTextField" destination="1On-d5-JcZ" id="4rH-ZI-adX"/>
-                <outlet property="nameTextField" destination="ngu-Ph-w8h" id="wQ2-YZ-uzm"/>
-                <outlet property="passwordTextField" destination="8lG-dX-WZt" id="tfW-Tz-SvG"/>
-                <outlet property="phoneTextField" destination="bu1-N2-mFB" id="Unl-B5-ils"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="wxh-oL-oMe"/>
+                <outlet property="cityTextField" destination="bu1-N2-mFB" id="vmW-uM-Qxd"/>
+                <outlet property="countryTextField" destination="8lG-dX-WZt" id="h9p-OG-zbv"/>
+                <outlet property="destinationNameTextField" destination="A6M-gR-4x8" id="kiU-UZ-mPr"/>
+                <outlet property="errorLabel" destination="14G-jk-cQw" id="KIt-qJ-NUI"/>
+                <outlet property="postalCodeTextField" destination="ngu-Ph-w8h" id="lCD-Jd-H5G"/>
+                <outlet property="streetTextField" destination="1On-d5-JcZ" id="Ggw-xM-lLf"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -30,18 +30,18 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVa-Ou-JDf">
                             <rect key="frame" x="0.0" y="0.0" width="834" height="355.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a deliveryman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kp-MV-Qhy">
-                                    <rect key="frame" x="209" y="55" width="347" height="53"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit a parcel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kp-MV-Qhy">
+                                    <rect key="frame" x="209" y="55" width="228.5" height="53"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Deliveryman email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A6M-gR-4x8">
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parcel destination" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A6M-gR-4x8">
                                     <rect key="frame" x="0.0" y="136" width="834" height="52.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Deliveryman password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8lG-dX-WZt">
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parcel country" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8lG-dX-WZt">
                                     <rect key="frame" x="0.0" y="196" width="834" height="52.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -61,17 +61,17 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyu-WC-Uc6">
                             <rect key="frame" x="0.0" y="405.5" width="834" height="355"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Deliveryman phone" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bu1-N2-mFB">
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parcel city" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bu1-N2-mFB">
                                     <rect key="frame" x="0.0" y="8" width="834" height="52.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Deliveryman first name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1On-d5-JcZ">
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parcel Street" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1On-d5-JcZ">
                                     <rect key="frame" x="0.0" y="68" width="834" height="52.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Deliveryman name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ngu-Ph-w8h">
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parcel postal code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ngu-Ph-w8h">
                                     <rect key="frame" x="0.0" y="128" width="834" height="52.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -109,7 +109,7 @@
                                         <fontDescription key="titleFontDescription" type="system" pointSize="31"/>
                                     </buttonConfiguration>
                                     <connections>
-                                        <action selector="handleContinue:" destination="-1" eventType="touchUpInside" id="xqg-id-LMK"/>
+                                        <action selector="updateParcel:" destination="-1" eventType="touchUpInside" id="rC1-KF-Ejt"/>
                                     </connections>
                                 </button>
                             </subviews>

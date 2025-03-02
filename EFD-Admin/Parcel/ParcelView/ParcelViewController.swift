@@ -43,11 +43,11 @@ class ParcelViewController: UIViewController , UITableViewDelegate, UITableViewD
         return 200
     }
     
-   // func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     //   let next = DetailParcelViewController.newInstance(parcel: self.all[indexPath.row])
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let next = DetailParcelViewController.newInstance(parcel: self.all[indexPath.row])
         
-       // reloadVC(next: next, actu: self)
-    //}
+        reloadVC(next: next, actu: self)
+    }
     
     
     func fetchParcel() {
