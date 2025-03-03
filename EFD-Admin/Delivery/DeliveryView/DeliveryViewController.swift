@@ -59,17 +59,14 @@ class DeliveryViewController: UIViewController , UITableViewDelegate, UITableVie
             
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if let error = error {
-                    print("Error: \(error)")
                     return
                 }
                 
                 guard let data = data else {
-                    print("No data")
                     return
                 }
                 
                 if let jsonString = String(data: data, encoding: .utf8) {
-                    print(" Reponse JSON brute : \(jsonString)")
                 }
                 
                 do {
@@ -81,15 +78,12 @@ class DeliveryViewController: UIViewController , UITableViewDelegate, UITableVie
                         
                         DispatchQueue.main.async {
                             self.all = allDeliveries
-                            print("Nombre de livraisons chargées : \(self.all.count)")
                             self.deliveryTableView.reloadData()
                         }
 
                     } else {
-                        print("JSON non array")
                     }
                 } catch {
-                    print( "Erreur de parsing JSON : \(error)")
                 }
             }
             

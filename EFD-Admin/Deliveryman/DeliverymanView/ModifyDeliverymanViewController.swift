@@ -33,10 +33,8 @@ class ModifyDeliverymanViewController: UIViewController {
     
     private func setupView() {
         guard let deliver = deliver else {
-            print("❌ Erreur: deliver est nil")
             return }
         
-        print("📌 Détails du livreur récupérés :", deliver.first_name)
 
         emailTextField.text = deliver.email
         passwordTextField.text = ""
@@ -98,7 +96,6 @@ class ModifyDeliverymanViewController: UIViewController {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let token = appDelegate.token else {
-            print("❌ Aucun token disponible. L'utilisateur doit se reconnecter.")
             return
         }
         

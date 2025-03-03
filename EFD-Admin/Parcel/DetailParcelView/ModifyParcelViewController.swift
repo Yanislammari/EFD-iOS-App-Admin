@@ -39,11 +39,9 @@ class ModifyParcelViewController: UIViewController {
     
     private func setupView() {
         guard let parcel = parcel else {
-            print("❌ Erreur: parcel est nil")
             return
         }
         
-        print("📌 Détails du colis récupérés :", parcel.destination_name)
         
         destinationNameTextField.text = parcel.destination_name
         countryTextField.text = parcel.adress?.country
@@ -60,18 +58,15 @@ class ModifyParcelViewController: UIViewController {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { (placemarks, error) in
             if let error = error {
-                print("❌ Erreur de géocodage : \(error.localizedDescription)")
                 completion(nil)
                 return
             }
 
             guard let location = placemarks?.first?.location else {
-                print("❌ Aucune coordonnée trouvée pour l'adresse")
                 completion(nil)
                 return
             }
 
-            print("✅ Coordonnées trouvées : \(location.coordinate.latitude), \(location.coordinate.longitude)")
             completion(location.coordinate)
         }
     }
@@ -80,22 +75,18 @@ class ModifyParcelViewController: UIViewController {
     private func fetchLivraisons() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let token = appDelegate.token else {
-            print("❌ Aucun token disponible.")
             return
         }
         
-        print("📡 Requête GET : admin/livraison")
         
         let request = request(route: "admin/livraison", method: "GET", token: token)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("❌ Erreur réseau : \(error.localizedDescription)")
                 return
             }
             
             guard let data = data else {
-                print("❌ Aucune donnée reçue")
                 return
             }
             
@@ -106,13 +97,10 @@ class ModifyParcelViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.livraisons = allLivraisons
                         self.livraisonPicker.reloadAllComponents()
-                        print("🚚 \(allLivraisons.count) livraisons chargées")
                     }
                 } else {
-                    print("❌ Erreur JSON : Format non valide")
                 }
             } catch {
-                print("❌ Erreur parsing JSON : \(error.localizedDescription)")
             }
         }
         
@@ -132,7 +120,6 @@ class ModifyParcelViewController: UIViewController {
                 }
                 
                 let fullAddress = "\(street), \(postalCode) \(city), \(country)"
-                print("📍 Adresse complète : \(fullAddress)")
                 
                 getCoordinatesFromAddress(address: fullAddress) { coordinates in
                     guard let coordinates = coordinates else {
@@ -158,7 +145,6 @@ class ModifyParcelViewController: UIViewController {
                             "postal_code": postalCode
                         ]
                     ]
-                    print("📤 Envoi de la requête PATCH avec : \(requestBody)")
 
                     
                     self.sendParcelUpdate(requestBody: requestBody)
@@ -171,7 +157,6 @@ class ModifyParcelViewController: UIViewController {
               return
           }
           
-          print("📤 Envoi de la requête PATCH pour le colis \(parcelId) avec \(requestBody)")
           
           let request = request(route: "admin/colis/\(parcelId)", method: "PATCH", token: token, body: requestBody)
           
@@ -229,12 +214,10 @@ extension ModifyParcelViewController: UIPickerViewDelegate, UIPickerViewDataSour
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard livraisons.indices.contains(row) else {
-            print("❌ Erreur : Index hors limite")
             return
         }
         
         selectedLivraison = livraisons[row]
-        print("✅ Livraison sélectionnée : \(selectedLivraison!.delivery_id)")
     }
 }
 

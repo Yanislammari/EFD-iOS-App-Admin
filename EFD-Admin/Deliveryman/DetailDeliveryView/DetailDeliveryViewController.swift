@@ -27,13 +27,11 @@ class DetailDeliveryViewController: UIViewController {
     
     func fetchDeliverymanDetails() {
         guard let deliverId = deliver?.deliver_id else {
-            print("❌ Aucun UUID disponible pour ce livreur.")
             return
         }
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let token = appDelegate.token else {
-            print("❌ Aucun token disponible. L'utilisateur doit se reconnecter.")
             return
         }
         
@@ -41,28 +39,22 @@ class DetailDeliveryViewController: UIViewController {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("❌ Erreur réseau : \(error.localizedDescription)")
                 return
             }
             
             guard let data = data else {
-                print("❌ Aucune donnée reçue")
                 return
             }
             
             if let jsonString = String(data: data, encoding: .utf8) {
-                print("📥 Réponse JSON brute : \(jsonString)")
             }
             
             do {
                 if let jsonDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    print("✅ JSON après extraction d'un objet :", jsonDict)
                     self.processDeliverymanData(jsonDict)
                 } else {
-                    print("❌ Erreur : Format JSON inattendu")
                 }
             } catch {
-                print("❌ Erreur de parsing JSON :", error.localizedDescription)
             }
         }
         
@@ -76,7 +68,6 @@ class DetailDeliveryViewController: UIViewController {
                 self.updateUI()
             }
         } else {
-            print("❌ Erreur : Conversion JSON -> Deliver échouée")
         }
     }
     
@@ -113,13 +104,11 @@ class DetailDeliveryViewController: UIViewController {
     
     @IBAction func deleteDeliveryman(_ sender: Any) {
         guard let deliverId = deliver?.deliver_id else {
-            print("❌ Aucun UUID disponible pour ce livreur.")
             return
         }
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let token = appDelegate.token else {
-            print("❌ Aucun token disponible. L'utilisateur doit se reconnecter.")
             return
         }
         
@@ -127,21 +116,18 @@ class DetailDeliveryViewController: UIViewController {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("❌ Erreur réseau : \(error.localizedDescription)")
                 DispatchQueue.main.async {
                 }
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse else {
-                print("❌ Réponse invalide du serveur.")
                 DispatchQueue.main.async {
                 }
                 return
             }
             
             if httpResponse.statusCode == 200 {
-                print("✅ Livreur supprimé avec succès.")
                 DispatchQueue.main.async {
                     
                     self.navigationController?.popViewController(animated: true)

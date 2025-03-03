@@ -50,38 +50,29 @@ class Deliver {
         
       
         let lat: Float = {
-                if let latValue = dict["lat"] as? Double {  // 🔥 Correction ici
-                    print("✅ lat récupéré sous format Double : \(latValue)")
+                if let latValue = dict["lat"] as? Double {   ici
                     return Float(latValue)
                 } else if let latValue = dict["lat"] as? NSNumber {
-                    print("✅ lat récupéré sous format NSNumber : \(latValue)")
                     return latValue.floatValue
                 } else if let latString = dict["lat"] as? String, let latDouble = Double(latString) {
-                    print("✅ lat récupéré sous format String : \(latString)")
                     return Float(latDouble)
                 } else {
-                    print("⚠️ Attention : lat non trouvé ou invalide, valeur par défaut = 0.0")
                     return 0.0
                 }
             }()
 
             let lgt: Float = {
-                if let lgtValue = dict["lgt"] as? Double {  // 🔥 Correction ici
-                    print("✅ lgt récupéré sous format Double : \(lgtValue)")
+                if let lgtValue = dict["lgt"] as? Double {
                     return Float(lgtValue)
                 } else if let lgtValue = dict["lgt"] as? NSNumber {
-                    print("✅ lgt récupéré sous format NSNumber : \(lgtValue)")
                     return lgtValue.floatValue
                 } else if let lgtString = dict["lgt"] as? String, let lgtDouble = Double(lgtString) {
-                    print("✅ lgt récupéré sous format String : \(lgtString)")
                     return Float(lgtDouble)
                 } else {
-                    print("⚠️ Attention : lgt non trouvé ou invalide, valeur par défaut = 0.0")
                     return 0.0
                 }
             }()
 
-            print("🚀 Coordonnées finales après parsing : lat=\(lat), lgt=\(lgt)")
 
         
         return Deliver(deliver_id: deliver_id, first_name: first_name, name: name, phone: phone, status: status, email: email, password: password, lat: lat,lng: lgt,createdAt: createdAt, updatedAt: updatedAt)

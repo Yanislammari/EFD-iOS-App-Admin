@@ -31,7 +31,6 @@ class AddParcelViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.token = appDelegate.token
         
-        print("✅ Token récupéré: \(self.token ?? "Aucun token")")
         livraisonPicker.delegate = self
         livraisonPicker.dataSource = self
         fetchLivraisons()
@@ -41,22 +40,18 @@ class AddParcelViewController: UIViewController {
     private func fetchLivraisons() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let token = appDelegate.token else {
-            print("❌ Aucun token disponible.")
             return
         }
         
-        print("📡 Requête GET : admin/livraison")
         
         let request = request(route: "admin/livraison", method: "GET", token: token)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("❌ Erreur réseau : \(error.localizedDescription)")
                 return
             }
             
             guard let data = data else {
-                print("❌ Aucune donnée reçue")
                 return
             }
             
@@ -67,20 +62,16 @@ class AddParcelViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.livraisons = allLivraisons
                         self.livraisonPicker.reloadAllComponents()
-                        print("🚚 \(allLivraisons.count) livraisons chargées")
                         
                         // Sélection automatique de la première livraison si disponible
                         if !self.livraisons.isEmpty {
                             self.selectedLivraison = self.livraisons[0]
                             self.livraisonPicker.selectRow(0, inComponent: 0, animated: false)
-                            print("📌 Livraison sélectionnée par défaut : \(self.selectedLivraison!.delivery_id)")
                         }
                     }
                 } else {
-                    print("❌ Erreur JSON : Format non valide")
                 }
             } catch {
-                print("❌ Erreur parsing JSON : \(error.localizedDescription)")
             }
         }
         
@@ -91,18 +82,15 @@ class AddParcelViewController: UIViewController {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { (placemarks, error) in
             if let error = error {
-                print("❌ Erreur de géocodage : \(error.localizedDescription)")
                 completion(nil)
                 return
             }
             
             guard let location = placemarks?.first?.location else {
-                print("❌ Aucune coordonnée trouvée pour l'adresse")
                 completion(nil)
                 return
             }
             
-            print("✅ Coordonnées trouvées : \(location.coordinate.latitude), \(location.coordinate.longitude)")
             completion(location.coordinate)
         }
     }
@@ -135,7 +123,6 @@ class AddParcelViewController: UIViewController {
                 DispatchQueue.main.async {
                     if let responseMessage = json?["message"] as? String {
                         self.errorLabel.text = responseMessage
-                        print("✅ Réponse du serveur : \(responseMessage)")
                         return
                     }
                     
@@ -177,7 +164,6 @@ class AddParcelViewController: UIViewController {
         }
         
         let fullAddress = "\(street), \(postalCode) \(city), \(country)"
-        print("📍 Adresse complète : \(fullAddress)")
         
         getCoordinatesFromAddress(address: fullAddress) { coordinates in
             guard let coordinates = coordinates else {
@@ -201,7 +187,6 @@ class AddParcelViewController: UIViewController {
                 ]
             ]
             
-            print("📤 Envoi de la requête POST avec : \(parcelBody)")
             
             self.sendParcelCreation(requestBody: parcelBody)
         }
@@ -232,12 +217,10 @@ extension AddParcelViewController: UIPickerViewDelegate, UIPickerViewDataSource 
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard livraisons.indices.contains(row) else {
-            print("❌ Erreur : Index hors limite")
             return
         }
         
         selectedLivraison = livraisons[row]
-        print("✅ Livraison sélectionnée : \(selectedLivraison!.delivery_id)")
     }
 }
 

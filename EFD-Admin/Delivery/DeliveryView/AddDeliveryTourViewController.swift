@@ -38,22 +38,18 @@ class AddDeliveryTourViewController: UIViewController {
     private func fetchDeliverymen() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let token = appDelegate.token else {
-            print("❌ Aucun token disponible.")
             return
         }
         
-        print("📡 Requête GET : admin/deliveryman")
         
         let request = request(route: "admin/delivery_man", method: "GET", token: token)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("❌ Erreur réseau : \(error.localizedDescription)")
                 return
             }
             
             guard let data = data else {
-                print("❌ Aucune donnée reçue")
                 return
             }
             
@@ -64,13 +60,10 @@ class AddDeliveryTourViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.deliverymen = allDeliverymen
                         self.deliverymanPicker.reloadAllComponents()
-                        print("👤 \(allDeliverymen.count) livreurs chargés")
                     }
                 } else {
-                    print("❌ Erreur JSON : Format non valide")
                 }
             } catch {
-                print("❌ Erreur parsing JSON : \(error.localizedDescription)")
             }
         }
         
@@ -80,22 +73,18 @@ class AddDeliveryTourViewController: UIViewController {
     private func fetchColis() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let token = appDelegate.token else {
-            print("❌ Aucun token disponible.")
             return
         }
         
-        print("📡 Requête GET : admin/colis")
         
         let request = request(route: "admin/colis", method: "GET", token: token)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("❌ Erreur réseau : \(error.localizedDescription)")
                 return
             }
             
             guard let data = data else {
-                print("❌ Aucune donnée reçue")
                 return
             }
             
@@ -106,13 +95,10 @@ class AddDeliveryTourViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.colisList = allColis
                         self.colisTableView.reloadData()
-                        print("📦 \(allColis.count) colis chargés")
                     }
                 } else {
-                    print("❌ Erreur JSON : Format non valide")
                 }
             } catch {
-                print("❌ Erreur parsing JSON : \(error.localizedDescription)")
             }
         }
         
@@ -208,7 +194,6 @@ extension AddDeliveryTourViewController: UIPickerViewDelegate, UIPickerViewDataS
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedDeliveryman = deliverymen[row]
-        print("✅ Livreur sélectionné : \(selectedDeliveryman!.name)")
     }
 }
 
