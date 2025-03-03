@@ -67,7 +67,6 @@ class ParcelViewController: UIViewController , UITableViewDelegate, UITableViewD
             }
             
             if let jsonString = String(data: data, encoding: .utf8) {
-                print(jsonString)
             }
             
             do{

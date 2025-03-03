@@ -23,13 +23,11 @@ class DetailParcelViewController: UIViewController {
     
     func fetchParcelDetails() {
         guard let parcelId = parcel?.parcel_id else {
-            print("❌ Aucun UUID disponible pour ce colis.")
             return
         }
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let token = appDelegate.token else {
-            print("❌ Aucun token disponible. L'utilisateur doit se reconnecter.")
             return
         }
         
@@ -37,28 +35,22 @@ class DetailParcelViewController: UIViewController {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("❌ Erreur réseau : \(error.localizedDescription)")
                 return
             }
             
             guard let data = data else {
-                print("❌ Aucune donnée reçue")
                 return
             }
             
             if let jsonString = String(data: data, encoding: .utf8) {
-                print("📥 Réponse JSON brute : \(jsonString)")
             }
             
             do {
                 if let jsonDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    print("✅ JSON après extraction d'un objet :", jsonDict)
                     self.processParcelData(jsonDict)
                 } else {
-                    print("❌ Erreur : Format JSON inattendu")
                 }
             } catch {
-                print("❌ Erreur de parsing JSON :", error.localizedDescription)
             }
         }
         
@@ -66,24 +58,19 @@ class DetailParcelViewController: UIViewController {
     }
     
     func processParcelData(_ json: [String: Any]) {
-        print("📥 JSON reçu : \(json)")
-        print("🔍 Vérification manuelle : lat = \(json["lat"] ?? "❌ Clé absente"), lgt = \(json["lgt"] ?? "❌ Clé absente")")
 
         if let parcelData = Parcel.fromJSON(dict: json) {
             DispatchQueue.main.async {
                 self.parcel = parcelData
-                print("🚀 Parcel récupéré avec succès : lat=\(parcelData.lat), lgt=\(parcelData.lgt)")
 
                 self.updateUI()
             }
         } else {
-            print("❌ Erreur : Conversion JSON -> Parcel échouée")
         }
     }
     
     func updateUI() {
         guard let parcel = parcel else { return }
-        print("parcel ",parcel.lat)
         
         let latString = parcel.lat != 0 ? String(format: "%.3f", parcel.lat) : "Non disponible"
         let lngString = parcel.lgt != 0 ? String(format: "%.3f", parcel.lgt) : "Non disponible"
@@ -114,13 +101,11 @@ class DetailParcelViewController: UIViewController {
     
     @IBAction func deleteParcel(_ sender: Any) {
         guard let parcelId = parcel?.parcel_id else {
-            print("❌ Aucun UUID disponible pour ce colis.")
             return
         }
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let token = appDelegate.token else {
-            print("❌ Aucun token disponible. L'utilisateur doit se reconnecter.")
             return
         }
         
@@ -128,21 +113,18 @@ class DetailParcelViewController: UIViewController {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("❌ Erreur réseau : \(error.localizedDescription)")
                 DispatchQueue.main.async {
                 }
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse else {
-                print("❌ Réponse invalide du serveur.")
                 DispatchQueue.main.async {
                 }
                 return
             }
             
             if httpResponse.statusCode == 200 {
-                print("✅ Colis supprimé avec succès.")
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
                 }

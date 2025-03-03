@@ -55,7 +55,6 @@ class DeliverymanViewController: UIViewController , UITableViewDelegate, UITable
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let token = appDelegate.token else {
-            print("❌ Aucun token disponible. L'utilisateur doit se reconnecter.")
             return
         }
         
@@ -65,17 +64,14 @@ class DeliverymanViewController: UIViewController , UITableViewDelegate, UITable
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("❌ Erreur réseau : \(error.localizedDescription)")
                 return
             }
             
             guard let data = data else {
-                print("❌ Aucune donnée reçue")
                 return
             }
             
             if let jsonString = String(data: data, encoding: .utf8) {
-                print("📥 Réponse JSON brute : \(jsonString)")
             }
             
             do {
@@ -91,11 +87,9 @@ class DeliverymanViewController: UIViewController , UITableViewDelegate, UITable
                     }
                     
                 } else {
-                    print("❌ Erreur : L'API ne retourne pas un tableau mais \(type(of: jsonObject))")
                 }
                 
             } catch {
-                print("❌ Erreur de parsing JSON : \(error.localizedDescription)")
             }
         }
         

@@ -45,11 +45,9 @@ class MapDeliveryTourViewController: UIViewController {
     }
     
     @objc func fetchDeliver() {
-        print("📡 Envoi de la requête GET : admin/delivery_man")
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let token = appDelegate.token else {
-            print("❌ Aucun token disponible. L'utilisateur doit se reconnecter.")
             return
         }
         
@@ -57,39 +55,31 @@ class MapDeliveryTourViewController: UIViewController {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                print("❌ Erreur réseau : \(error.localizedDescription)")
                 return
             }
             
             guard let data = data else {
-                print("❌ Aucune donnée reçue")
                 return
             }
             
             if let jsonString = String(data: data, encoding: .utf8) {
-                print("📥 Réponse JSON brute : \(jsonString)")
             }
             
             do {
                 let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
                 
                 if let jsonArray = jsonObject as? [[String: Any]] {
-                    print("✅ JSON converti en tableau avec \(jsonArray.count) éléments")
                     
                     let allDeliveries = jsonArray.compactMap { Deliver.fromJSON(dict: $0) }
                     
                     DispatchQueue.main.async {
-                        print("📌 Nombre de livreurs avant mise à jour : \(self.deliveryMan.count)")
                         self.deliveryMan = allDeliveries
-                        print("📌 Nombre de livreurs après mise à jour : \(self.deliveryMan.count)")
                         self.reloadMap()
                     }
                 } else {
-                    print("❌ Erreur : L'API ne retourne pas un tableau mais \(type(of: jsonObject))")
                 }
                 
             } catch {
-                print("❌ Erreur de parsing JSON : \(error.localizedDescription)")
             }
         }
         task.resume()
@@ -109,13 +99,11 @@ class MapDeliveryTourViewController: UIViewController {
     
     func reloadMap() {
         DispatchQueue.main.async {
-            print("📍 Rechargement de la carte avec \(self.deliveryMan.count) livreurs")
             
             self.mapView.removeAnnotations(self.mapView.annotations)
             var newAnnotations: [MKPointAnnotation] = []
             
             for dm in self.deliveryMan {
-                print("📌 Ajout du livreur : \(dm.name) - Latitude: \(dm.lat), Longitude: \(dm.lng)")
                 
                 let newAnnotation = MKPointAnnotation()
                 newAnnotation.title = dm.name
@@ -124,11 +112,9 @@ class MapDeliveryTourViewController: UIViewController {
             }
             
             if newAnnotations.isEmpty {
-                print("⚠️ Aucun livreur à afficher")
             } else {
                 self.mapView.addAnnotations(newAnnotations)
                 self.mapView.showAnnotations(newAnnotations, animated: true)
-                print("✅ \(newAnnotations.count) pins ajoutés sur la carte")
             }
         }
     }
@@ -145,7 +131,6 @@ extension MapDeliveryTourViewController: MKMapViewDelegate {
         }
         let annotationLocation = CLLocation(latitude: annotationCoordinate.latitude, longitude: annotationCoordinate.longitude)
         let distance = annotationLocation.distance(from: userLocation)
-        print(distance)
     }
 }
 
