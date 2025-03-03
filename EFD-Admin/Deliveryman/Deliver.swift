@@ -61,13 +61,13 @@ class Deliver {
                 }
             }()
 
-            let lgt: Float = {
-                if let lgtValue = dict["lgt"] as? Double {
-                    return Float(lgtValue)
-                } else if let lgtValue = dict["lgt"] as? NSNumber {
-                    return lgtValue.floatValue
-                } else if let lgtString = dict["lgt"] as? String, let lgtDouble = Double(lgtString) {
-                    return Float(lgtDouble)
+            let lng: Float = {
+                if let lngValue = dict["lng"] as? Double {
+                    return Float(lngValue)
+                } else if let lngValue = dict["lng"] as? NSNumber {
+                    return lngValue.floatValue
+                } else if let lngString = dict["lng"] as? String, let lngDouble = Double(lngString) {
+                    return Float(lngDouble)
                 } else {
                     return 0.0
                 }
@@ -75,6 +75,6 @@ class Deliver {
 
 
         
-        return Deliver(deliver_id: deliver_id, first_name: first_name, name: name, phone: phone, status: status, email: email, password: password, lat: lat,lng: lgt,createdAt: createdAt, updatedAt: updatedAt)
+        return Deliver(deliver_id: deliver_id, first_name: first_name, name: name, phone: phone, status: status, email: email, password: password, lat: lat,lng: lng,createdAt: createdAt, updatedAt: updatedAt)
     }
 }
