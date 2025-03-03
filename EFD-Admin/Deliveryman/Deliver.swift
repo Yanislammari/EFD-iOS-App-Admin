@@ -50,7 +50,7 @@ class Deliver {
         
       
         let lat: Float = {
-                if let latValue = dict["lat"] as? Double {   ici
+                if let latValue = dict["lat"] as? Double {
                     return Float(latValue)
                 } else if let latValue = dict["lat"] as? NSNumber {
                     return latValue.floatValue
